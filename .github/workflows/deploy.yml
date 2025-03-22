@@ -22,9 +22,11 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: List contents
-        run: ls -la && ls -la dist || echo "dist directory not found"
+      - name: Add .nojekyll file
+        run: touch dist/.nojekyll
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
+          branch: gh-pages    # Deploy to gh-pages branch
+          clean: true
