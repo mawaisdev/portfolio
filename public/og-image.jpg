@@ -1,0 +1,8 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#1e293b"/>
+  <rect x="50" y="50" width="1100" height="530" rx="20" fill="#0f172a"/>
+  <text x="600" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" fill="white" font-weight="bold">Muhammad Awais</text>
+  <text x="600" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#94a3b8">Software Engineer</text>
+  <text x="600" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#64748b">Full-Stack Developer • React • Next.js • TypeScript</text>
+  <text x="600" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#475569">mawais.dev</text>
+</svg>
