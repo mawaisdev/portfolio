@@ -77,6 +77,35 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Muhammad Awais',
+    jobTitle: 'Software Engineer',
+    description: 'Software Engineer specializing in full-stack development with Next.js, React, and modern web technologies.',
+    url: 'https://mawais.dev',
+    sameAs: [
+      'https://github.com/mawaisdev',
+      'https://linkedin.com/in/mawaisdev',
+      'https://twitter.com/mawaisdev',
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Lahore',
+      addressCountry: 'Pakistan',
+    },
+    knowsAbout: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Node.js',
+      'PostgreSQL',
+      'MongoDB',
+      'Tailwind CSS',
+      'Full Stack Development',
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -87,6 +116,10 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#3b82f6" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
