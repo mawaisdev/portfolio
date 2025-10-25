@@ -5,13 +5,21 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Send, Loader2 } from 'lucide-react';
+import { useMutation } from 'convex/react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { ContactFormData } from '@/types';
+import { api } from '../../../convex/_generated/api';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -22,6 +30,7 @@ const contactSchema = z.object({
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const submitContact = useMutation(api.contact.submitContact);
 
   const {
     register,
@@ -34,16 +43,20 @@ export function ContactForm() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
-    
+
     try {
-      // Simulate API call - replace with actual endpoint
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await submitContact({
+        name: data.name,
+        email: data.email,
+        message: data.message,
+      });
+
       toast({
         title: 'Message sent successfully!',
-        description: 'Thank you for reaching out. I\'ll get back to you soon.',
+        description:
+          'Thank you for reaching out. I&apos;ll get back to you soon.',
       });
-      
+
       reset();
     } catch (error) {
       toast({
@@ -61,7 +74,8 @@ export function ContactForm() {
       <CardHeader>
         <CardTitle>Send me a message</CardTitle>
         <CardDescription>
-          Fill out the form below and I'll get back to you as soon as possible.
+          Fill out the form below and I&apos;ll get back to you as soon as
+          possible.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -109,7 +123,9 @@ export function ContactForm() {
               className={errors.message ? 'border-destructive' : ''}
             />
             {errors.message && (
-              <p className="text-sm text-destructive">{errors.message.message}</p>
+              <p className="text-sm text-destructive">
+                {errors.message.message}
+              </p>
             )}
           </div>
 
