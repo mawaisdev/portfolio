@@ -16,16 +16,26 @@ test.describe('Homepage', () => {
   test('should have working navigation', async ({ page }) => {
     await page.goto('/');
 
-    // Test navigation links
-    await page.getByRole('link', { name: /about/i }).click();
+    // Test navigation links - use more specific selectors
+    await page
+      .getByRole('navigation')
+      .getByRole('link', { name: 'About' })
+      .click();
     await expect(page).toHaveURL('/about');
 
-    await page.getByRole('link', { name: /projects/i }).click();
+    await page
+      .getByRole('navigation')
+      .getByRole('link', { name: 'Projects' })
+      .click();
     await expect(page).toHaveURL('/projects');
 
-    await page.getByRole('link', { name: /contact/i }).click();
+    await page
+      .getByRole('navigation')
+      .getByRole('link', { name: 'Contact' })
+      .click();
     await expect(page).toHaveURL('/contact');
 
+    // Test logo link
     await page.getByRole('link', { name: /muhammad awais/i }).click();
     await expect(page).toHaveURL('/');
   });
