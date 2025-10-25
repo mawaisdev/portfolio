@@ -37,6 +37,15 @@ A modern, responsive portfolio website built with Next.js 15, TypeScript, and sh
 - ✅ Playwright for E2E tests
 - ✅ Path aliases with `@/` imports
 
+### Real-time Features (Phase 2)
+
+- ✅ Convex integration for real-time data
+- ✅ Visitor tracking and analytics
+- ✅ Contact form submissions storage
+- ✅ Project view tracking
+- ✅ Admin dashboard for analytics
+- ✅ Real-time visitor counter
+
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 15 (App Router)
@@ -46,6 +55,7 @@ A modern, responsive portfolio website built with Next.js 15, TypeScript, and sh
 - **Forms**: React Hook Form + Zod
 - **Theme**: next-themes
 - **Icons**: lucide-react
+- **Database**: Convex (real-time backend)
 - **Package Manager**: pnpm
 
 ## 📦 Installation
@@ -66,16 +76,31 @@ pnpm install
 3. Copy environment variables:
 
 ```bash
-cp .env.example .env.local
+cp env.example .env.local
 ```
 
-4. Run the development server:
+4. Initialize Convex (one-time setup):
+
+```bash
+pnpm exec convex dev
+```
+
+This will:
+
+- Prompt you to log in or create a Convex account
+- Create a new Convex project
+- Generate your Convex URL
+- Add it to your `.env.local` file
+
+5. Run the development server:
 
 ```bash
 pnpm dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+**Note**: For the admin dashboard, visit [http://localhost:3000/admin](http://localhost:3000/admin)
 
 ## 📝 Available Scripts
 
@@ -88,22 +113,32 @@ pnpm dev
 - `pnpm test:e2e` - Run E2E tests
 - `pnpm test:coverage` - Generate test coverage report
 - `pnpm analyze` - Analyze bundle size
+- `pnpm convex:dev` - Start Convex development server
+- `pnpm convex:deploy` - Deploy Convex functions
 
 ## 🗂️ Project Structure
 
 ```
 portfolio/
 ├── public/                 # Static assets
+├── convex/                 # Convex backend functions
+│   ├── schema.ts          # Database schema
+│   ├── visitors.ts        # Visitor tracking functions
+│   ├── projectViews.ts    # Project analytics functions
+│   └── contact.ts         # Contact form functions
 ├── src/
 │   ├── app/               # Next.js App Router pages
 │   │   ├── (marketing)/   # Marketing pages (Home, About, Projects, Contact)
-│   │   ├── layout.tsx     # Root layout with theme provider
+│   │   ├── (admin)/       # Admin dashboard
+│   │   ├── layout.tsx     # Root layout with providers
 │   │   ├── sitemap.ts     # Sitemap generation
 │   │   └── robots.ts      # robots.txt generation
 │   ├── components/        # React components
 │   │   ├── features/      # Feature-specific components
 │   │   ├── layouts/       # Layout components (Header, Footer, Container)
-│   │   └── ui/            # shadcn/ui components
+│   │   ├── ui/            # shadcn/ui components
+│   │   └── analytics/     # Analytics components
+│   ├── providers/         # Context providers
 │   ├── hooks/             # Custom React hooks
 │   ├── lib/               # Utility functions
 │   ├── types/             # TypeScript type definitions
@@ -171,15 +206,17 @@ pnpm test:e2e
 pnpm test:coverage
 ```
 
-## 🎯 Future Enhancements (Phase 2)
+## 🎯 Future Enhancements
 
-- [ ] Convex integration for real-time features
-- [ ] Visitor counter with real-time tracking
-- [ ] Project view tracking and analytics
-- [ ] Contact form submissions storage
-- [ ] Admin dashboard with analytics
-- [ ] MDX blog system
+- [x] Convex integration for real-time features ✅
+- [x] Visitor counter with real-time tracking ✅
+- [x] Project view tracking and analytics ✅
+- [x] Contact form submissions storage ✅
+- [x] Admin dashboard with analytics ✅
+- [ ] MDX blog system with reactions
 - [ ] Performance optimization (95+ Lighthouse scores)
+- [ ] Email notifications for contact submissions
+- [ ] Advanced analytics with charts and graphs
 
 ## 📄 License
 
