@@ -33,6 +33,7 @@ export const createPost = mutation({
 
 // Get all published blog posts
 export const getPublishedPosts = query({
+  args: {},
   handler: async ctx => {
     const posts = await ctx.db
       .query('blogPosts')

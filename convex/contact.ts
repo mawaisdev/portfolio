@@ -23,6 +23,7 @@ export const submitContact = mutation({
 
 // Get all contact submissions
 export const getContactSubmissions = query({
+  args: {},
   handler: async ctx => {
     const submissions = await ctx.db
       .query('contactSubmissions')
@@ -35,6 +36,7 @@ export const getContactSubmissions = query({
 
 // Get unread submissions
 export const getUnreadSubmissions = query({
+  args: {},
   handler: async ctx => {
     const submissions = await ctx.db
       .query('contactSubmissions')

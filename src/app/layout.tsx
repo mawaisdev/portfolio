@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 
-import { ConvexProvider } from '@/providers/ConvexProvider';
+import { ConvexClientProvider } from '@/providers/ConvexClientProvider';
 import { VisitorTracker } from '@/components/analytics/VisitorTracker';
 import './globals.css';
 
@@ -144,7 +144,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
-        <ConvexProvider>
+        <ConvexClientProvider>
           <VisitorTracker />
           <ThemeProvider
             attribute="class"
@@ -157,7 +157,7 @@ export default function RootLayout({
             </a>
             {children}
           </ThemeProvider>
-        </ConvexProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );

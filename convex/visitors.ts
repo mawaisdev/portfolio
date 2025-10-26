@@ -24,6 +24,7 @@ export const trackVisitor = mutation({
 
 // Get total visitor count
 export const getTotalVisitors = query({
+  args: {},
   handler: async ctx => {
     const visitors = await ctx.db.query('visitors').collect();
     return visitors.length;
@@ -32,6 +33,7 @@ export const getTotalVisitors = query({
 
 // Get unique visitor count (based on IP)
 export const getUniqueVisitors = query({
+  args: {},
   handler: async ctx => {
     const visitors = await ctx.db.query('visitors').collect();
     const uniqueIPs = new Set(visitors.map(v => v.ip));
@@ -53,6 +55,7 @@ export const getVisitorsByPath = query({
 
 // Get recent visitors (last 24 hours)
 export const getRecentVisitors = query({
+  args: {},
   handler: async ctx => {
     const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
     const visitors = await ctx.db

@@ -34,6 +34,7 @@ export const getProjectViews = query({
 
 // Get views for all projects
 export const getAllProjectViews = query({
+  args: {},
   handler: async ctx => {
     const views = await ctx.db.query('projectViews').collect();
     const viewsByProject = views.reduce(
