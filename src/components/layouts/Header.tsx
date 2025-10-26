@@ -15,6 +15,7 @@ const navigation = [
   { name: 'Home', href: ROUTES.home },
   { name: 'About', href: ROUTES.about },
   { name: 'Projects', href: ROUTES.projects },
+  { name: 'Blog', href: ROUTES.blog },
   { name: 'Contact', href: ROUTES.contact },
 ];
 
@@ -25,7 +26,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <Container>
-        <nav className="flex items-center justify-between py-4" aria-label="Main navigation">
+        <nav
+          className="flex items-center justify-between py-4"
+          aria-label="Main navigation"
+        >
           <div className="flex items-center">
             <Link
               href={ROUTES.home}
@@ -37,7 +41,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
+            {navigation.map(item => (
               <Link
                 key={item.name}
                 href={item.href}
@@ -76,7 +80,7 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 border-t">
-              {navigation.map((item) => (
+              {navigation.map(item => (
                 <Link
                   key={item.name}
                   href={item.href}

@@ -41,4 +41,21 @@ export default defineSchema({
     totalPageViews: v.number(),
     lastUpdated: v.number(),
   }),
+
+  // Blog posts
+  blogPosts: defineTable({
+    title: v.string(),
+    slug: v.string(),
+    excerpt: v.string(),
+    content: v.string(),
+    author: v.string(),
+    published: v.boolean(),
+    tags: v.array(v.string()),
+    views: v.number(),
+    likes: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index('by_slug', ['slug'])
+    .index('by_published', ['published']),
 });

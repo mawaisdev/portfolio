@@ -12,6 +12,7 @@ import {
 import { Skeleton } from '@/components/ui/skeleton';
 import { VisitsChart } from './VisitsChart';
 import { ContactSubmissions } from './ContactSubmissions';
+import { AdvancedAnalytics } from './AdvancedAnalytics';
 import { Visitors } from '@/components/features/analytics/VisitorCounter';
 
 export function AdminDashboard() {
@@ -110,6 +111,9 @@ export function AdminDashboard() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Advanced Analytics */}
+      <AdvancedAnalytics />
 
       {/* Contact Submissions */}
       <ContactSubmissions />
