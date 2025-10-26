@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { ContactFormData } from '@/types';
-import { api } from '../../../convex/_generated/api';
+import { api } from 'convex/_generated/api';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
