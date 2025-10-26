@@ -4,6 +4,7 @@ import { ThemeProvider } from 'next-themes';
 
 import { ConvexClientProvider } from '@/providers/ConvexClientProvider';
 import { VisitorTracker } from '@/components/analytics/VisitorTracker';
+import { TopProgressBar } from '@/components/navigation/TopProgressBar';
 import './globals.css';
 
 const inter = Inter({
@@ -146,6 +147,7 @@ export default function RootLayout({
       >
         <ConvexClientProvider>
           <VisitorTracker />
+          <TopProgressBar />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
